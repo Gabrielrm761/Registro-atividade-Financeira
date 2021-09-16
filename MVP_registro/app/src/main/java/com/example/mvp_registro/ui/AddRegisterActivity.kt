@@ -2,7 +2,10 @@ package com.example.mvp_registro.ui
 
 import android.app.Activity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mvp_registro.App
 import com.example.mvp_registro.R
 import com.example.mvp_registro.databinding.ActivityAddRegisterBinding
 import com.example.mvp_registro.datasource.RegisterDataSource
@@ -15,6 +18,10 @@ import java.util.*
 class AddRegisterActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityAddRegisterBinding
+
+    private val mainViewModel: MainViewModel by viewModels {
+        MainViewModelFactory((application as App).repository)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,8 +60,9 @@ class AddRegisterActivity : AppCompatActivity(){
                 id = intent.getIntExtra(REGISTER_ID, 0)
             )
             RegisterDataSource.insertRegister(register)
-
+            mainViewModel.insert(register)
             setResult(Activity.RESULT_OK)
+            Toast.makeText(this, R.string.label_show_success, Toast.LENGTH_SHORT).show()
             finish()
         }
     }

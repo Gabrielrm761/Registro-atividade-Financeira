@@ -8,4 +8,5 @@
     <string name="label_delete">Deletar</string>
     <string name="label_profit">Recebimentos</string>
     <string name="label_expense">Despesas</string>
+    <string name="label_show_success">Registro Cadastrado!</string>
 </resources>

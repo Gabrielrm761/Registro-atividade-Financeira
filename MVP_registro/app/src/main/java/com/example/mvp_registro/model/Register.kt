@@ -1,10 +1,14 @@
 package com.example.mvp_registro.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class Register(
+    @PrimaryKey(autoGenerate = true) val id : Int = 0,
     val description : String,
     val date : String,
-    val value : Double,
-    val id : Int = 0
+    val value : Double
 )
 {
     override fun equals(other: Any?): Boolean {
